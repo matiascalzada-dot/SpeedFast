@@ -21,9 +21,9 @@ public class Main {
         System.out.println(encomienda1);
         encomienda1.repartidorAsignado();
 
-        compraExpress paraguas = new compraExpress(114,"pedro de valdivia","articulo para salir", "paraguas");
+        compraExpress paraguas = new compraExpress(114,"Pedro de valdivia","articulo para salir", "paraguas");
         System.out.println(paraguas);
-        paraguas.repartidorAsignado("Luchito");
+        paraguas.repartidorAsignado("Fernando");
 
     }
 }
