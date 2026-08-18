@@ -33,7 +33,7 @@ El proyecto fue desarrollado a partir de un caso contextualizado, abordando prob
 1. Clona el repositorio desde GitHub:
 
 ```bash
-git clone https://github.com/matiascalzada-dot/EFT-bimestre2.git
+git clone https://github.com/matiascalzada-dot/SpeedFast
 ```
 
 2. Abre el proyecto en IntelliJ IDEA.
@@ -47,11 +47,11 @@ git clone https://github.com/matiascalzada-dot/EFT-bimestre2.git
 
 ---
 
-**Repositorio GitHub:** \[https://github.com/matiascalzada-dot/EFT-bimestre2]
-**Fecha de entrega:** \[19/07/2025]
+**Repositorio GitHub:** \[https://github.com/matiascalzada-dot/SpeedFast]
+**Fecha de entrega:** \[17/08/2026]
 
 ---
 
-© Duoc UC | Escuela de Informática y Telecomunicaciones | Evaluación Final Transversal EFT
+© Duoc UC | Escuela de Informática y Telecomunicaciones | actividad fromativa 1
 
 
