@@ -23,7 +23,7 @@ public class Main {
 
         compraExpress paraguas = new compraExpress(114,"pedro de valdivia","articulo para salir", "paraguas");
         System.out.println(paraguas);
-        paraguas.repartidorAsignado("Luis");
+        paraguas.repartidorAsignado("Luchito");
 
     }
 }
