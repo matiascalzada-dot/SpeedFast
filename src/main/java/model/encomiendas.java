@@ -4,8 +4,8 @@ public class encomiendas extends Pedido {
 
     private int paquetes;
 
-    public encomiendas(int idPedido, String direccionEntrega, String tipoPedido, int paquetes) {
-        super(idPedido, direccionEntrega, tipoPedido);
+    public encomiendas(int idPedido, String direccionEntrega, String tipoPedido, int distanciaKm, int paquetes) {
+        super(idPedido, direccionEntrega, tipoPedido, distanciaKm);
         this.paquetes = paquetes;
     }
 
@@ -20,6 +20,16 @@ public class encomiendas extends Pedido {
     @Override
     public void repartidorAsignado(){
         System.out.println("el repartidor le dará su encomienda una vez se pese y embale");
+    }
+
+    @Override
+    public void mostrarResumen() {
+        super.mostrarResumen();
+    }
+
+    @Override
+    public int calcularTiempoEntrega() {
+        return (int) Math.round(20 + (1.5 * getDistanciaKm()));
     }
 
     @Override

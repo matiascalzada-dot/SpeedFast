@@ -5,11 +5,21 @@ public abstract class Pedido {
     private int idPedido;
     private String direccionEntrega;
     private String tipoPedido;
+    private int distanciaKm;
 
-    public Pedido(int idPedido, String direccionEntrega, String tipoPedido) {
+    public Pedido(int idPedido, String direccionEntrega, String tipoPedido, int distanciaKm) {
         this.idPedido = idPedido;
         this.direccionEntrega = direccionEntrega;
         this.tipoPedido = tipoPedido;
+        this.distanciaKm = distanciaKm;
+    }
+
+    public int getDistanciaKm() {
+        return distanciaKm;
+    }
+
+    public void setDistanciaKm(int distanciaKm) {
+        this.distanciaKm = distanciaKm;
     }
 
     public int getIdPedido() {
@@ -39,6 +49,11 @@ public abstract class Pedido {
     public void repartidorAsignado(){
         System.out.println("se le ha asignado un repartidor cerca de usted");
     }
+
+    public void mostrarResumen(){
+        System.out.println("id del pedido: " + idPedido + "\ndireccion de la entrega: " + direccionEntrega + "\ndistancia del destino: " + distanciaKm);
+    }
+    public abstract int calcularTiempoEntrega();
 
     @Override
     public String toString() {
