@@ -1,5 +1,5 @@
 ![Duoc UC](https://www.duoc.cl/wp-content/uploads/2022/09/logo-0.png)
-# 🧠 Actividad formativa 1 – Desarrollo Orientado a Objetos II
+# 🧠 Actividad formativa 2 – Desarrollo Orientado a Objetos II
 
 ## 👤 Autor del proyecto
 - **Nombre completo:** Matias Calzada Rodriguez
@@ -10,7 +10,7 @@
 ---
 
 ## 📘 Descripción general del sistema
-Desarrollar un sistema para SpeedFast, una empresa de reparto a domicilio que ofrece tres tipos de servicio: Comida, Encomiendas, Compra Express. Implementamos estas lógicas usando polimorfismo, para definir un método repartidorAsignado() que se comporte de manera diferenciada según el tipo de pedido, crear instancias en el main y ejecutarlas en consola.
+Desarrollar un sistema para SpeedFast, una empresa de reparto a domicilio que ofrece tres tipos de servicio: Comida, Encomiendas, Compra Express. Implementamos estas lógicas usando polimorfismo, clases y métodos abstractos que se comporten de manera diferenciada según el tipo de pedido, crear instancias en el main y ejecutarlas en consola.
 
 El proyecto fue desarrollado a partir de un caso contextualizado, abordando problemáticas reales y proponiendo una solución estructurada, modular y reutilizable.
 
@@ -38,9 +38,9 @@ git clone https://github.com/matiascalzada-dot/SpeedFast
 
 2. Abre el proyecto en IntelliJ IDEA.
 
-3. Verifica que los archivos `.txt` estén correctamente ubicados.
+3. Verifica que los archivos `src` estén correctamente ubicados.
 
-4. Ejecuta el archivo `Main.java` desde el paquete `app`.
+4. Ejecuta el archivo `Main.java` desde el paquete `data`.
 
 5. Sigue las instrucciones en consola o en la interfaz gráfica (si corresponde).
 
@@ -48,10 +48,10 @@ git clone https://github.com/matiascalzada-dot/SpeedFast
 ---
 
 **Repositorio GitHub:** \[https://github.com/matiascalzada-dot/SpeedFast]
-**Fecha de entrega:** \[17/08/2026]
+**Fecha de entrega:** \[25/08/2026]
 
 ---
 
-© Duoc UC | Escuela de Informática y Telecomunicaciones | actividad fromativa 1
+© Duoc UC | Escuela de Informática y Telecomunicaciones | actividad formativa 2
 
 
