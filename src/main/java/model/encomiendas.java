@@ -1,6 +1,10 @@
 package model;
 
-public class encomiendas extends Pedido {
+import interfaces.Cancelable;
+import interfaces.Despachable;
+import interfaces.Rastreable;
+
+public class encomiendas extends Pedido implements Despachable, Cancelable, Rastreable {
 
     private int paquetes;
 
@@ -35,5 +39,23 @@ public class encomiendas extends Pedido {
     @Override
     public String toString() {
         return "\nEncomienda: " + getTipoPedido() + "\nID del pedido: " + getIdPedido() + "\nCantidad: " + getPaquetes() + "\nDireccion de entrega: " + getDireccionEntrega() ;
+    }
+
+    @Override
+    public void cancelar() {
+        System.out.println("Encomienda despachada.");
+
+    }
+
+    @Override
+    public void despachar() {
+        System.out.println("Encomienda cancelada.");
+
+    }
+
+    @Override
+    public void verHistorial() {
+        System.out.println("Historial: Encomienda entregada.");
+
     }
 }

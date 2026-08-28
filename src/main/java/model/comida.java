@@ -1,6 +1,10 @@
 package model;
 
-public class comida extends Pedido {
+import interfaces.Cancelable;
+import interfaces.Despachable;
+import interfaces.Rastreable;
+
+public class comida extends Pedido implements Despachable, Cancelable, Rastreable {
     private String restaurant;
 
     public comida(int idPedido, String direccionEntrega, String tipoPedido, int distanciaKm, String restaurant) {
@@ -35,5 +39,23 @@ public class comida extends Pedido {
     @Override
     public String toString() {
         return "\nPedido de comida: " + getTipoPedido() + "\nID del pedido: " + getIdPedido() + "\nReataurant: " + getRestaurant() + "\nDireccion de entrega: " + getDireccionEntrega() ;
+    }
+
+    @Override
+    public void cancelar() {
+        System.out.println("Pedido de comida despachado.");
+
+    }
+
+    @Override
+    public void despachar() {
+        System.out.println("Pedido de comida cancelado.");
+
+    }
+
+    @Override
+    public void verHistorial() {
+        System.out.println("Historial: Pedido de comida entregado");
+
     }
 }

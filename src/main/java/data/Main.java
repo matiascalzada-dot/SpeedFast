@@ -1,36 +1,71 @@
 package data;
 
 
+import interfaces.Cancelable;
+import interfaces.Despachable;
+import interfaces.Rastreable;
 import model.Pedido;
 import model.comida;
 import model.compraExpress;
 import model.encomiendas;
 
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
 
-        comida papasFritas = new comida(111,"maipu","papas fritas",12, "olivo limon");
-        System.out.println(papasFritas);
-        papasFritas.repartidorAsignado();
+        ArrayList<Pedido> pedidos = new ArrayList<>();
 
-        encomiendas encomienda1 = new encomiendas(113,"quilicura","cama de gato", 7, 2);
-        System.out.println(encomienda1);
-        encomienda1.repartidorAsignado();
+        Pedido sushi = new comida(1, "san martin 123", "sushi", 9, "kami sushi");
+        Pedido empanadas = new encomiendas(2, "pedro aguirre 321", "empanadas", 5, 2);
+        Pedido lapices = new compraExpress(3, "juan errazuris", "utiles escolares", 12, "lapices");
 
-        compraExpress paraguas = new compraExpress(114,"Pedro de valdivia","articulo para salir", 10,"paraguas");
-        System.out.println(paraguas);
-        paraguas.repartidorAsignado("Fernando");
+
+        pedidos.add(sushi);
+        pedidos.add(empanadas);
+        pedidos.add(lapices);
+
+        compraExpress escoba = new compraExpress(3, "pedro ruiz", "aseo", 7, "escoba");
+
+        escoba.repartidorAsignado("juan");
+
+        for (Pedido pedido : pedidos) {
+            pedido.mostrarResumen();
+        }
+
         System.out.println();
+        System.out.println("--- DESPACHO ---");
+        for (Pedido pedido : pedidos) {
 
-        papasFritas.mostrarResumen();
-        System.out.println("su encomienda llegará en "+papasFritas.calcularTiempoEntrega() + " minutos");
+            if (pedido instanceof Despachable) {
+
+                Despachable despachable = (Despachable) pedido;
+
+                despachable.despachar();
+            }
+        }
+
         System.out.println();
+        System.out.println("--- CANCELACIÓN ---");
 
-        encomienda1.mostrarResumen();
-        System.out.println("su encomienda llegará en "+encomienda1.calcularTiempoEntrega() + " minutos");
+        if (empanadas instanceof Cancelable) {
+
+            Cancelable cancelable = (Cancelable) empanadas;
+
+            cancelable.cancelar();
+        }
 
         System.out.println();
-        paraguas.mostrarResumen();
-        System.out.println("su encomienda llegará en "+paraguas.calcularTiempoEntrega() + " minutos");
+        System.out.println("--- HISTORIAL DE ENTREGAS ---");
+
+        for (Pedido pedido : pedidos) {
+
+            if (pedido instanceof Rastreable) {
+
+                Rastreable rastreable = (Rastreable) pedido;
+
+                rastreable.verHistorial();
+            }
+        }
     }
 }
