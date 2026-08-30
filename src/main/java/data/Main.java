@@ -25,14 +25,13 @@ public class Main {
         pedidos.add(teclado);
         pedidos.add(lapices);
         pedidos.add(empanadas);
-        
-
 
         for (Pedido pedido : pedidos){
             if (pedido instanceof encomiendas || pedido instanceof compraExpress) {
                 pedido.repartidorAsignado();
             }
         }
+
 
         sushi.repartidorAsignado("miguel");
         empanadas.repartidorAsignado("amaro");

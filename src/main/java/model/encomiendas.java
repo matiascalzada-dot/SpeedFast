@@ -45,18 +45,15 @@ public class encomiendas extends Pedido implements Despachable, Cancelable, Rast
     @Override
     public void cancelar() {
         System.out.println("Encomienda cancelada.");
-
     }
 
     @Override
     public void despachar() {
         System.out.println("\nEncomienda despachada\ntiempo de espera: " + calcularTiempoEntrega() + " minutos");
-
     }
 
     @Override
     public void verHistorial() {
         System.out.println("Historial: Encomienda entregada.");
-
     }
 }
