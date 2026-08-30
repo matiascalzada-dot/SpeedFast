@@ -23,9 +23,10 @@ public class compraExpress extends Pedido implements Despachable, Cancelable, Ra
         this.pedido = pedido;
     }
 
-
-    public void repartidorAsignado(String nombreRepartidor) {
-        System.out.println("El repartidor " + nombreRepartidor + " le entregará el/la " + getPedido());
+    @Override
+    public void repartidorAsignado() {
+        this.repartidor = "Repartidor express";
+        System.out.println("Repartidor asignado automáticamente: " + repartidor);
     }
 
     @Override
@@ -35,7 +36,7 @@ public class compraExpress extends Pedido implements Despachable, Cancelable, Ra
 
     @Override
     public int calcularTiempoEntrega() {
-        int tiempo = 10;
+        int tiempo = getDistanciaKm();
 
         if (getDistanciaKm() > 5) {
             tiempo += 5;
@@ -50,13 +51,13 @@ public class compraExpress extends Pedido implements Despachable, Cancelable, Ra
 
     @Override
     public void cancelar() {
-        System.out.println("Pedido express despachado.");
+        System.out.println("Pedido express cancelado.");
 
     }
 
     @Override
     public void despachar() {
-        System.out.println("Pedido express cancelado.");
+        System.out.println("\nPedido express despachado\ntiempo de espera: " + calcularTiempoEntrega() + " minutos");
 
     }
 

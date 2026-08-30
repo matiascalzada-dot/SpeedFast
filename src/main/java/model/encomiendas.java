@@ -23,7 +23,8 @@ public class encomiendas extends Pedido implements Despachable, Cancelable, Rast
 
     @Override
     public void repartidorAsignado(){
-        System.out.println("el repartidor le dará su encomienda una vez se pese y embale");
+        this.repartidor = "Repartidor encomienda";
+        System.out.println("repartidor asignado automaticamente: " + repartidor);
     }
 
     @Override
@@ -43,13 +44,13 @@ public class encomiendas extends Pedido implements Despachable, Cancelable, Rast
 
     @Override
     public void cancelar() {
-        System.out.println("Encomienda despachada.");
+        System.out.println("Encomienda cancelada.");
 
     }
 
     @Override
     public void despachar() {
-        System.out.println("Encomienda cancelada.");
+        System.out.println("\nEncomienda despachada\ntiempo de espera: " + calcularTiempoEntrega() + " minutos");
 
     }
 

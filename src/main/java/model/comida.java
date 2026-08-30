@@ -5,7 +5,7 @@ import interfaces.Despachable;
 import interfaces.Rastreable;
 
 public class comida extends Pedido implements Despachable, Cancelable, Rastreable {
-    private String restaurant;
+    private final String restaurant;
 
     public comida(int idPedido, String direccionEntrega, String tipoPedido, int distanciaKm, String restaurant) {
         super(idPedido, direccionEntrega, tipoPedido, distanciaKm);
@@ -16,13 +16,16 @@ public class comida extends Pedido implements Despachable, Cancelable, Rastreabl
         return restaurant;
     }
 
-    public void setRestaurant(String restaurant) {
-        this.restaurant = restaurant;
+
+    @Override
+    public void repartidorAsignado() {
+
     }
 
     @Override
-    public void repartidorAsignado(){
-        System.out.println("un repartidor con mochila termica le entregará su pedido");
+    public void repartidorAsignado(String repartidor){
+        this.repartidor = "repartidor asignado";
+        System.out.println("repartidor asignado manualmente: " + repartidor);
     }
 
     @Override
@@ -43,13 +46,13 @@ public class comida extends Pedido implements Despachable, Cancelable, Rastreabl
 
     @Override
     public void cancelar() {
-        System.out.println("Pedido de comida despachado.");
+        System.out.println("Pedido de comida cancelado.");
 
     }
 
     @Override
     public void despachar() {
-        System.out.println("Pedido de comida cancelado.");
+        System.out.println("\nPedido de comida despachado\ntiempo de espera: " + calcularTiempoEntrega() + " minutos");
 
     }
 

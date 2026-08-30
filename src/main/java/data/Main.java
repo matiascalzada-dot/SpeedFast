@@ -17,17 +17,25 @@ public class Main {
         ArrayList<Pedido> pedidos = new ArrayList<>();
 
         Pedido sushi = new comida(1, "san martin 123", "sushi", 9, "kami sushi");
-        Pedido empanadas = new encomiendas(2, "pedro aguirre 321", "empanadas", 5, 2);
-        Pedido lapices = new compraExpress(3, "juan errazuris", "utiles escolares", 12, "lapices");
-
+        Pedido teclado = new encomiendas(2, "pedro aguirre 321", "teclado", 5, 2);
+        Pedido lapices = new compraExpress(3, "juan errazuris 674", "utiles escolares", 12, "lapices");
+        Pedido empanadas = new comida(4, "pedro ruiz 579", "empanadas", 7, "empanadas Maipu");
 
         pedidos.add(sushi);
-        pedidos.add(empanadas);
+        pedidos.add(teclado);
         pedidos.add(lapices);
+        pedidos.add(empanadas);
+        
 
-        compraExpress escoba = new compraExpress(3, "pedro ruiz", "aseo", 7, "escoba");
 
-        escoba.repartidorAsignado("juan");
+        for (Pedido pedido : pedidos){
+            if (pedido instanceof encomiendas || pedido instanceof compraExpress) {
+                pedido.repartidorAsignado();
+            }
+        }
+
+        sushi.repartidorAsignado("miguel");
+        empanadas.repartidorAsignado("amaro");
 
         for (Pedido pedido : pedidos) {
             pedido.mostrarResumen();
@@ -48,9 +56,9 @@ public class Main {
         System.out.println();
         System.out.println("--- CANCELACIÓN ---");
 
-        if (empanadas instanceof Cancelable) {
+        if (teclado instanceof Cancelable) {
 
-            Cancelable cancelable = (Cancelable) empanadas;
+            Cancelable cancelable = (Cancelable) teclado;
 
             cancelable.cancelar();
         }
