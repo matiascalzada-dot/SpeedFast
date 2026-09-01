@@ -17,9 +17,11 @@ public class encomiendas extends Pedido implements Despachable, Cancelable, Rast
         return paquetes;
     }
 
+
     public void setPaquetes(int paquetes) {
         this.paquetes = paquetes;
     }
+
 
     @Override
     public void repartidorAsignado(){
@@ -42,10 +44,12 @@ public class encomiendas extends Pedido implements Despachable, Cancelable, Rast
         return "\nEncomienda: " + getTipoPedido() + "\nID del pedido: " + getIdPedido() + "\nCantidad: " + getPaquetes() + "\nDireccion de entrega: " + getDireccionEntrega() ;
     }
 
+
     @Override
     public void cancelar() {
         System.out.println("Encomienda cancelada.");
     }
+
 
     @Override
     public void despachar() {

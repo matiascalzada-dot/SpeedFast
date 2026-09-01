@@ -33,12 +33,14 @@ public class Main {
         }
 
 
+
         sushi.repartidorAsignado("miguel");
         empanadas.repartidorAsignado("amaro");
 
         for (Pedido pedido : pedidos) {
             pedido.mostrarResumen();
         }
+
 
         System.out.println();
         System.out.println("--- DESPACHO ---");

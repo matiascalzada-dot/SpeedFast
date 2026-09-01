@@ -63,11 +63,12 @@ public abstract class Pedido implements Despachable, Cancelable, Rastreable {
         System.out.println("Repartidor asignado manualmente" + nombre);
     }
 
+
     public void mostrarResumen(){
         System.out.println("\nid del pedido: " + idPedido + "\ndireccion de la entrega: " + direccionEntrega + "\ndistancia del destino: " + distanciaKm);
     }
-    public abstract int calcularTiempoEntrega();
 
+    public abstract int calcularTiempoEntrega();
 
     @Override
     public String toString() {

@@ -19,14 +19,15 @@ public class comida extends Pedido implements Despachable, Cancelable, Rastreabl
 
     @Override
     public void repartidorAsignado() {
-
     }
+
 
     @Override
     public void repartidorAsignado(String repartidor){
         this.repartidor = "repartidor asignado";
         System.out.println("repartidor asignado manualmente: " + repartidor);
     }
+
 
     @Override
     public void mostrarResumen() {
@@ -38,6 +39,7 @@ public class comida extends Pedido implements Despachable, Cancelable, Rastreabl
     public int calcularTiempoEntrega() {
         return 15 + (2 * getDistanciaKm());
     }
+
 
     @Override
     public String toString() {
@@ -53,8 +55,8 @@ public class comida extends Pedido implements Despachable, Cancelable, Rastreabl
     @Override
     public void despachar() {
         System.out.println("\nPedido de comida despachado\ntiempo de espera: " + calcularTiempoEntrega() + " minutos");
-
     }
+
 
     @Override
     public void verHistorial() {
