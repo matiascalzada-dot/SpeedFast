@@ -10,6 +10,7 @@ public abstract class Pedido implements Despachable, Cancelable, Rastreable {
     private String direccionEntrega;
     private String tipoPedido;
     private int distanciaKm;
+    private EstadoPedido estado;
     protected String repartidor;
 
     public Pedido(int idPedido, String direccionEntrega, String tipoPedido, int distanciaKm) {
@@ -17,59 +18,44 @@ public abstract class Pedido implements Despachable, Cancelable, Rastreable {
         this.direccionEntrega = direccionEntrega;
         this.tipoPedido = tipoPedido;
         this.distanciaKm = distanciaKm;
-    }
-    public int getDistanciaKm() {
-        return distanciaKm;
+        this.estado = EstadoPedido.PENDIENTE;
     }
 
-    public void setDistanciaKm(int distanciaKm) {
-        this.distanciaKm = distanciaKm;
-    }
-
-    public int getIdPedido() {
-        return idPedido;
-    }
-
-    public void setIdPedido(int idPedido) {
-        this.idPedido = idPedido;
-    }
-
-    public String getDireccionEntrega() {
-        return direccionEntrega;
-    }
-
-    public void setDireccionEntrega(String direccionEntrega) {
-        this.direccionEntrega = direccionEntrega;
-    }
-
-    public String getTipoPedido() {
-        return tipoPedido;
-    }
-
-    public void setTipoPedido(String tipoPedido) {
-        this.tipoPedido = tipoPedido;
-    }
-
-    public String getRepartidor() {
-        return repartidor;
-    }
+    public int getDistanciaKm() { return distanciaKm; }
+    public void setDistanciaKm(int distanciaKm) { this.distanciaKm = distanciaKm; }
+    public int getIdPedido() { return idPedido; }
+    public void setIdPedido(int idPedido) { this.idPedido = idPedido; }
+    public String getDireccionEntrega() { return direccionEntrega; }
+    public void setDireccionEntrega(String direccionEntrega) { this.direccionEntrega = direccionEntrega; }
+    public String getTipoPedido() { return tipoPedido; }
+    public void setTipoPedido(String tipoPedido) { this.tipoPedido = tipoPedido; }
+    public EstadoPedido getEstado() { return estado; }
+    public String getEstadoTexto() { return estado.name(); }
+    public void setEstado(EstadoPedido nuevoEstado) { this.estado = nuevoEstado; }
+    public void setEstado(String nuevoEstado) { this.estado = EstadoPedido.valueOf(nuevoEstado.toUpperCase()); }
+    public String getRepartidor() { return repartidor; }
 
     public abstract void repartidorAsignado();
 
-    public void repartidorAsignado(String nombre){
+    public void repartidorAsignado(String nombre) {
         this.repartidor = nombre;
-        System.out.println("Repartidor asignado manualmente" + nombre);
+        System.out.println("\nRepartidor asignado: " + nombre);
     }
 
-
-    public void mostrarResumen(){
-        System.out.println("\nid del pedido: " + idPedido + "\ndireccion de la entrega: " + direccionEntrega + "\ndistancia del destino: " + distanciaKm);
+    public void mostrarResumen() {
+        System.out.println("\nid del pedido: " + idPedido
+                + "\ndireccion de la entrega: " + direccionEntrega
+                + "\ndistancia del destino: " + distanciaKm + " km"
+                + "\nestado: " + estado);
     }
 
     public abstract int calcularTiempoEntrega();
 
     @Override
     public String toString() {
-        return "\nPedido: " + getTipoPedido() + "\nID del pedido: " + getIdPedido() + "\nDireccion de entrega: " + getDireccionEntrega() ;
+        return "\nPedido: " + getTipoPedido()
+                + "\nID del pedido: " + getIdPedido()
+                + "\nDireccion de entrega: " + getDireccionEntrega()
+                + "\nEstado: " + getEstado();
     }
 }

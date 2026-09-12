@@ -24,8 +24,8 @@ public class comida extends Pedido implements Despachable, Cancelable, Rastreabl
 
     @Override
     public void repartidorAsignado(String repartidor){
-        this.repartidor = "repartidor asignado";
-        System.out.println("repartidor asignado manualmente: " + repartidor);
+        this.repartidor = repartidor;
+        System.out.println("\nrepartidor asignado manualmente: " + repartidor);
     }
 
 
