@@ -37,8 +37,6 @@ public class Main {
             zonaDeCarga.agregarPedido(pedido);
         }
 
-
-
         System.out.println("\n--- INICIO DE REPARTIDORES ---");
         Thread juan = new Thread(new Repartidor("Juan", zonaDeCarga));
         Thread camila = new Thread(new Repartidor("Camila", zonaDeCarga));
