@@ -37,7 +37,6 @@ public class PedidoController {
         return false;
     }
 
-
     public int asignarRepartidores() {
         int asignados = 0;
 
@@ -51,6 +50,7 @@ public class PedidoController {
                 asignados++;
             }
         }
+
 
         notificarCambio();
         return asignados;

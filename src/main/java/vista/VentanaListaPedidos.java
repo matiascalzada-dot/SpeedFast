@@ -25,10 +25,12 @@ public class VentanaListaPedidos extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout(10, 10));
 
+
         JLabel titulo = new JLabel("Pedidos registrados", SwingConstants.CENTER);
         titulo.setFont(new Font("SansSerif", Font.BOLD, 20));
         titulo.setBorder(BorderFactory.createEmptyBorder(12, 10, 5, 10));
         add(titulo, BorderLayout.NORTH);
+
 
         String[] columnas = {"ID", "Dirección", "Tipo", "Detalle", "Distancia (km)", "Repartidor", "Tiempo (min)"};
         modeloTabla = new DefaultTableModel(columnas, 0) {
