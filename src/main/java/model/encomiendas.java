@@ -7,10 +7,22 @@ import interfaces.Rastreable;
 public class encomiendas extends Pedido implements Despachable, Cancelable, Rastreable {
 
     private int paquetes;
+    private String detalle;
 
     public encomiendas(int idPedido, String direccionEntrega, String tipoPedido, int distanciaKm, int paquetes) {
         super(idPedido, direccionEntrega, tipoPedido, distanciaKm);
         this.paquetes = paquetes;
+        this.detalle = "";
+    }
+
+    /**
+     * Constructor utilizado por la interfaz gráfica para permitir ingresar
+     * texto libre como detalle de la encomienda (por ejemplo: "teclado").
+     */
+    public encomiendas(int idPedido, String direccionEntrega, String tipoPedido, int distanciaKm, String detalle) {
+        super(idPedido, direccionEntrega, tipoPedido, distanciaKm);
+        this.paquetes = 1;
+        this.detalle = detalle;
     }
 
     public int getPaquetes() {
@@ -20,6 +32,14 @@ public class encomiendas extends Pedido implements Despachable, Cancelable, Rast
 
     public void setPaquetes(int paquetes) {
         this.paquetes = paquetes;
+    }
+
+    public String getDetalle() {
+        return detalle;
+    }
+
+    public void setDetalle(String detalle) {
+        this.detalle = detalle;
     }
 
 
@@ -41,7 +61,7 @@ public class encomiendas extends Pedido implements Despachable, Cancelable, Rast
 
     @Override
     public String toString() {
-        return "\nEncomienda: " + getTipoPedido() + "\nID del pedido: " + getIdPedido() + "\nCantidad: " + getPaquetes() + "\nDireccion de entrega: " + getDireccionEntrega() ;
+        return "\nEncomienda: " + getTipoPedido() + "\nID del pedido: " + getIdPedido() + "\nDetalle: " + getDetalle() + "\nCantidad: " + getPaquetes() + "\nDireccion de entrega: " + getDireccionEntrega() ;
     }
 
 

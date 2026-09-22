@@ -37,7 +37,7 @@ public class compraExpress extends Pedido implements Despachable, Cancelable, Ra
 
     @Override
     public int calcularTiempoEntrega() {
-        int tiempo = getDistanciaKm();
+        int tiempo =getDistanciaKm();
 
         if (getDistanciaKm() > 5) {
             tiempo += 5;
