@@ -16,72 +16,59 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        ZonaDeCarga zonaDeCarga = new ZonaDeCarga();
-        List<Pedido> pedidos = new ArrayList<>();
+        PedidoDAO dao = new PedidoDAO();
 
-        Pedido sushi = new comida(1, "san martin 123", "sushi", 9, "kami sushi");
-        Pedido teclado = new encomiendas(2, "pedro aguirre 321", "teclado", 5, 2);
-        Pedido lapices = new compraExpress(3, "juan errazuris 674", "utiles escolares", 12, "lapices");
-        Pedido empanadas = new comida(4, "pedro ruiz 579", "empanadas", 7, "empanadas Maipu");
-        Pedido documentos = new encomiendas(5, "providencia 1450", "documentos", 4, 1);
+        Pedido pedidoModificar = new comida(
+                11,
+                "Nueva direccion 456",
+                "Sushi",
+                15,
+                "Kami Sushi"
+        );
 
-        pedidos.add(sushi);
-        pedidos.add(teclado);
-        pedidos.add(lapices);
-        pedidos.add(empanadas);
-        pedidos.add(documentos);
+        pedidoModificar.setEstado("EN_REPARTO");
 
-        System.out.println("[Zona de carga inicializada]");
+        boolean actualizado = dao.actualizarPedido(pedidoModificar);
 
-        for (Pedido pedido : pedidos) {
-            zonaDeCarga.agregarPedido(pedido);
-        }
-
-        System.out.println("\n--- INICIO DE REPARTIDORES ---");
-        Thread juan = new Thread(new Repartidor("Juan", zonaDeCarga));
-        Thread camila = new Thread(new Repartidor("Camila", zonaDeCarga));
-        Thread pedro = new Thread(new Repartidor("Pedro", zonaDeCarga));
-
-        juan.start();
-        camila.start();
-        pedro.start();
-        try {
-            juan.join();
-            camila.join();
-            pedro.join();
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            System.out.println("Proceso principal interrumpido.");
-        }
-
-        System.out.println("\n--- ESTADO FINAL ---");
-        boolean todosEntregados = true;
-        for (Pedido pedido : pedidos) {
-            System.out.println("Pedido #" + pedido.getIdPedido()
-                    + " -> " + pedido.getEstado()
-                    + " | Repartidor: " + pedido.getRepartidor());
-            if (pedido.getEstado().name().equals("ENTREGADO") == false) {
-                todosEntregados = false;
-            }
-        }
-
-        System.out.println();
-        if (todosEntregados) {
-            System.out.println("Todos los pedidos han sido entregados correctamente");
+        if (actualizado) {
+            System.out.println("Pedido actualizado correctamente.");
         } else {
-            System.out.println("Quedaron pedidos sin entregar.");
+            System.out.println("No se pudo actualizar el pedido.");
         }
 
-        System.out.println("\n--- CANCELACION ---");
-        if (pedidos instanceof Cancelable) {
-            ((Cancelable) teclado).cancelar();
+        encomiendas teclado = new encomiendas(
+                12,
+                "Pedro Aguirre 321",
+                "Encomienda",
+                5,
+                2
+        );
+
+        boolean resultadoEncomienda = dao.crearPedido(teclado);
+
+        System.out.println("Encomienda guardada: " + resultadoEncomienda);
+
+        compraExpress lapices = new compraExpress(
+                13,
+                "Juan Errázuriz 674",
+                "Express",
+                12,
+                "Lápices"
+        );
+
+        boolean resultadoExpress = dao.crearPedido(lapices);
+
+        System.out.println("Express guardado: " + resultadoExpress);
+
+        ArrayList<Pedido> listaPedidos = dao.listarPedidos();
+
+        System.out.println("\n===== PEDIDOS DESDE MYSQL =====");
+
+        for (Pedido pedido : listaPedidos) {
+            System.out.println(pedido);
         }
 
-        System.out.println("\n--- HISTORIAL DE ENTREGAS ---");
-        for (Pedido pedido : pedidos) {
-            if (pedido instanceof Rastreable) {
-                ((Rastreable) pedido).verHistorial();
-            }
-        }
     }
+
+
 }
